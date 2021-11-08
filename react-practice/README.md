@@ -75,3 +75,41 @@ function Wrapper({children}){
     return <div>{children} </div>
 }
 ```
+
+### 조건부 렌더링 
+```
+<Hello name="react" isSpecial={true}>
+```
+처럼 true false인 경우를 나누어서 다르게 처리가 가능하다 -> 삼항 연사자 등으로 처리하기
+
+### useState
+
+사용방법 예제 
+Counter.js
+```
+import React, {useState} from "react";
+
+function Counter(){
+    const [number, setNumber] = useState(0);
+
+    const onPlus = () => {
+        setNumber(number + 1);
+        // or (함수형 업데이트가 가능하다)
+        setNumber(pre => pre + 1);
+    }
+    const onMinus = () => {
+        setNumber(number - 1);
+        //or 
+        setNumber(pre => pre - 1);
+    }
+    return(
+        <div>
+            <h1>{number}</h1>
+            <button onClick={onPlus}>+1</button>
+            <button onClick={onMinus}>-1</button>
+        </div>
+    )
+}
+```
+
+number은 변수 이름 setNumber은 number을 관리하는 함수 useState(0)을 통해서 0으로 number을 초기화
