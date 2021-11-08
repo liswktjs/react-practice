@@ -26,3 +26,52 @@ const style = {
 6.  class를 사용할 때에는 tag에 className="class이름" 으로 설정한다 
 
 7.  주석을 쓸때에는 {/* */}로 감싸야 한다 (단, tag 안에 기록 할 때에는 {}로 감쌀 필요가 없다) 
+
+
+### props
+: 값을 전달해줄때 사용하는 것 
+
+전달해주고자 하는 값을 tag로 선언시 같이 넣어준다 
+
+사용법 예시 
+> App.js
+```
+<Hello name="react" color="red"/>
+``` 
+> Hello.js
+```
+function Hello(props){
+    return <div style={{color: props.color}}>Hello {props.name}</div>
+}
+
+// 비구조할당시 
+
+function Hello({color, name}){
+    return <div style={{color}}>
+        Hello {name} </div>
+}
+
+//props값 기본값 설정시 
+
+Hello.defaultProps = {
+    name: 'undefined',
+    color: 'black'
+}
+```
+
+- props children
+:tag와 tag사이에 들어가 있는 내용들 
+> App.js
+```
+<Wrapper>
+    <Hello name="react" color="red"/>
+    <Hello />
+</Wrapper>
+``` 
+
+>Wrapper.js
+```
+function Wrapper({children}){
+    return <div>{children} </div>
+}
+```
