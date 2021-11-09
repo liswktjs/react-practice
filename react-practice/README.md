@@ -113,3 +113,129 @@ function Counter(){
 ```
 
 number은 변수 이름 setNumber은 number을 관리하는 함수 useState(0)을 통해서 0으로 number을 초기화
+
+### input 상태 관리하기 
+
+- e.target : 이벤트가 발생한 dom에 대한 정보가 들어가 있음 
+- e.target.value : dom에 입력된 value를 얻을 수 있음
+
+- input의 value 값을 조정해주기 위해서는 value를 꼭 넣어야 한다 
+예시 
+```
+const [text, setText] = useState('');
+const onChange = (e) => {
+    setText(e.target.value);
+}
+.
+.
+.
+<input onChange={onChange} value={text}/>
+```
+
+### 여러개의 Input 관리하기 
+
+- 객체 형태로 input을 관리하기 
+
+```
+const [inputs, setInputs] = useState({
+    name: '',
+    nickname: '',
+})
+```
+
+! 객체를  update할 때에는 기존의 객체를 복사하여 다시 업데이트 해야 한다 (불변성을 지켜야 하기 때문!)
+
+```
+const nextInputs = {
+    ...inputs,
+    [name] : value,
+}
+```
+
+### useRef 
+
+react에서는 특정 DOM을 선택할때에 document.querySelector() 등을 사용하지 않고 useRef를 사용한다
+id를 활용하여 선택할 수도 있찌만 권장되지 않는다 
+ref의 경우 컴포넌트 내부에서만 작동하기 떄문에 중복문제를 피할 수 있다 
+
+ref는 reference의 줄임말로 DOM을 직접 건드려야 할 때에 주로 사용한다 
+
+사용방법 
+
+```
+const nameInput = useRef(); // ref 객체 만들기 
+<input ref={nameInput}/> // 참조하고자 하는 dom에 ref값으로 변수명 넣기 
+nameInput.current.focus() // dom에 접근하여 원하는 작업 진행하기
+```
+
+### 배열 렌더링 하기 
+
+- map을 사용하여서 구현하기
+- 배열 랜더링 시 각 원소들 마다 key값을 부여해야 함 
+```
+users.map(user => (
+    <Usesr user={user} key={user.id}>
+))
+```
+
+### useRef로 컴포넌트 안의 변수 만들기 
+
+컴포넌트가 rerendering 되어도 기억할 수 있는 변수 만들기 
+
+변수에서도 ref를 달아서 컴포넌트 내부에있는 DOM을 컴포넌트 외부에서 사용할 때 쓰여진다 
+
+- 주로 사용하는 곳 : setTimeout, setInterval 등의 id, 외부 라이브러리를 사용하여 생성된 인스턴스 ,scroll의 위치 등 
+
+### 배열 다루기 
+
+- 배열에 항목 추가하기 
+
+1. 기존 항목을 복사한 후에 update를 진행하여야 한다 
+
+예시 
+```
+// 새로운 user의 내용을 담은 객체를 만들기 
+const user = {
+      id: nextId.current,
+      username,
+      email,
+}
+// 복사한 기존의 users 배열에 user을 추가하기
+setUsers([...users, user]);
+```
+
+2. concat 활용하기 
+```
+setUsers(users.concat(user));
+```
+
+- 배열에서 항목 제거하기 
+
+삭제시 특정 id를 가지고 있는 항목만을 삭제해야 하기 떄문에 id 값을 같이 넘겨준다 파라미터 값을 넘겨주어야 할 때에는 새롭게 함수를 만들어서 넣어준다
+
+onClick={onRemove(user.id)} (x)
+
+
+<button onClick={() => onRemove(user.id)}>삭제</button> (o)
+
+
+filter 함수 사용하기 
+```
+const onRemove = id => {
+    setUsers(users.filter(user => user.id !== id))
+}
+```
+
+- 배열에서 항목 수정하기 
+
+map함수와 삼항연산자를 사용한다 이전 삭제하기와 마찬가지로 id 값을 활용해야 하므로 onClick에 {() => onToggle(user.id)} 로 표기해야한다!
+
+```
+const onToggle = id => {
+    setUsers(users.map(
+      user => user.id === id 
+      ? {...user, active: !user.active}
+      : user
+    ))
+  }
+```
