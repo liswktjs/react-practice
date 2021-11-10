@@ -36,10 +36,10 @@
 
 🎮 2021.11.10 
 
-[ ] useEffect 개념 배우기 
+[X] useEffect 개념 배우기 
 
-[ ] useEffect활용해서 마운트 언마운트 업데이트시 할 작업 정하기
+[X] useEffect활용해서 마운트 언마운트 업데이트시 할 작업 정하기
 
-[ ] useMemo 사용하여 연산한 값 재사용하기 
+[X] useMemo 사용하여 연산한 값 재사용하기 
 
-[ ] useCallback 사용하여 함수 재사용하기
+[X] useCallback 사용하여 함수 재사용하기
