@@ -84,6 +84,10 @@ function Wrapper({children}){
 
 ### useState
 
+: 상태 유지 값과 그 값을 갱신하는 함수를 반환한다
+
+최초로 렌더링 하는 동안 반환된 state는 첫번째 전달인자로 초기화 되고 setState함수는 state 갱신시 사용한다 
+
 사용방법 예제 
 Counter.js
 ```
@@ -182,6 +186,8 @@ users.map(user => (
 
 컴포넌트가 rerendering 되어도 기억할 수 있는 변수 만들기 
 
+useRef: .current 프로퍼티로 전달된 인자로 초기화된 변경 가능한 ref 객체로 해당 객체는 컴포넌트 전 생애 주기를 통해서 유지된다 
+
 변수에서도 ref를 달아서 컴포넌트 내부에있는 DOM을 컴포넌트 외부에서 사용할 때 쓰여진다 
 
 - 주로 사용하는 곳 : setTimeout, setInterval 등의 id, 외부 라이브러리를 사용하여 생성된 인스턴스 ,scroll의 위치 등 
@@ -239,3 +245,55 @@ const onToggle = id => {
     ))
   }
 ```
+
+### useEffect Hook 
+
+: 리액트 컴포넌트가 렌더링 될떄 마다 특정 작업을 수행하도록 설정할 수 있는 hook / useEffect에 전달되는 함수는 화면에 렌더링이 완료된 후에 수행된다 
+
+역할: react에게 컴포넌트가 렌더링 이후에 어떤 일을 수행해야 하는지 말한다 react는 effect를 기억했다가 DOM 업데이트를 수행한 이후에 불러낸다 / 랜더링 할 때마다 실행된다
+
+- mount : 컴포넌트가 나타나는 것을 의미 
+
+- unmount : 컴포넌트가 삭제되는 것을 의미 
+
+사용예시
+```
+useEffect(() => {
+        console.log('컴포넌트가 화면에 나타남')
+        // 실행가능한 목록 
+        // props -> state 
+        // REST API 
+        // setInterval, setTimeout 등 
+        return () => {
+            console.log('컴포넌트가 사라짐')
+            //clearInterval, clearTimeout
+            // 라이브러리 인스턴스 제거 
+        }
+    }, [user]); // user값이 바뀔때마다 함수가 호출이 된다 user값은 최신의 상태인 user 값을 가리키게 된다  참조되는 값이 변경되는 경우 넣어줘야 한다  
+```
+
+### useMemo
+
+성능을 최적화 해야하는 상황에서 사용한다 / 지정한 데이터값에 변동이 있을 때에만 함수를 실행한다 
+
+예시 
+```
+const count = useMemo(() => countActiveUsers(users), [users]);
+```
+
+### useCallback 
+
+useMemo와 비슷한 함수로 주로 렌더링 성능을 최적화 해야할때 사용된다 -> 만들었떤 함수를 재 사용할 수 있도록 해준다 
+
+예시
+```
+//재사용하고자 하는 함수를 useCallback으로 감싸준다
+ const onChange = useCallback (e => {
+    const{name, value} = e.target
+    setInputs({
+      ...inputs,
+      [name]:value
+    })
+  }, [inputs]); // 해당 파라미터에는 현재 함수로인해서 변하고 있는 객체를 넣어준다 해당 객체가 변할때에만 함수가 호출되어 사용되기 된다
+```
+
