@@ -43,3 +43,18 @@
 [X] useMemo 사용하여 연산한 값 재사용하기 
 
 [X] useCallback 사용하여 함수 재사용하기
+
+
+🎈 2021.11.12 
+
+[ ] Reactmemo를 사용한 컴포넌트 리렌더링 방지
+
+[ ] useReducer 개념정리 
+
+[ ] useReducer 적용
+
+[ ] 커스텀 Hook 만들어서 사용하기 
+
+[ ] Context API 
+
+[ ] Context API 사용한 전역 값 관리 
