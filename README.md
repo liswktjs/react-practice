@@ -47,11 +47,11 @@
 
 🎈 2021.11.12 
 
-[ ] Reactmemo를 사용한 컴포넌트 리렌더링 방지
+[X] Reactmemo를 사용한 컴포넌트 리렌더링 방지
 
-[ ] useReducer 개념정리 
+[X] useReducer 개념정리 
 
-[ ] useReducer 적용
+[X] useReducer 적용
 
 [ ] 커스텀 Hook 만들어서 사용하기 
 

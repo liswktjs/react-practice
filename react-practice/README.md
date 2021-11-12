@@ -297,3 +297,48 @@ useMemo와 비슷한 함수로 주로 렌더링 성능을 최적화 해야할때
   }, [inputs]); // 해당 파라미터에는 현재 함수로인해서 변하고 있는 객체를 넣어준다 해당 객체가 변할때에만 함수가 호출되어 사용되기 된다
 ```
 
+### 컴포넌트 리렌더링 방지
+
+- React.memo 
+:컴포넌트의 리렌더링 성능을 올리는데 사용한다  컴포넌트가 변화할 떄에만 렌더링이 되게 된다
+
+적용방법 
+
+```
+const User = React.memo(function User() {
+    ...
+})
+
+export default React.memo(User)
+```
+
+### useReducer 
+
+action을 기반으로 값들을 업데이트를 해준다 
+
+상태 업데이트 로직을 컴포넌트 밖으로 분리가 가능하게 해준다 
+
+reducer: 상태를 업데이트하는 함수 
+
+예시 
+```
+function reducer(state,action){
+    switch(action.type){
+        case 'INCREMENT' :
+            return state + 1;
+        case 'DECREMENT' :
+            return state - 1;
+        default:
+            return state;
+    }
+}
+//사용시 reducer로 사용하고자 하는 함수, 초기화 값을 차례대로 넣는다
+const [number,dispatch] = useReducer(reducer, 0);
+
+// 적용할 때에 
+const onMinus = () => {
+        dispatch({
+            type: 'DECREMENT'
+        })
+}
+```
