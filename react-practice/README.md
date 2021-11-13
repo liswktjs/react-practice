@@ -342,3 +342,16 @@ const onMinus = () => {
         })
 }
 ```
+
+- useReducer vs useState
+
+값이 하나이거나 단순한 문자열일 경우 useState가 편하다 
+
+하지만 값이 배열이나 어떤 조건들을 거쳐야 하는 경우 useReducer의 경우가 더 나을 수 있다 
+
+### custom Hook 만들기 
+
+useState,useEffect,useReducer등의 기존의 훅들을 사용하여서 커스텀 훅을 만들 수 있다 
+
+
+
