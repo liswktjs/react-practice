@@ -53,8 +53,6 @@
 
 [X] useReducer 적용
 
-[ ] 커스텀 Hook 만들어서 사용하기 
+🎢 2021.11.15
 
-[ ] Context API 
-
-[ ] Context API 사용한 전역 값 관리 
+[X] 에러 수정
