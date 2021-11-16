@@ -56,3 +56,23 @@
 🎢 2021.11.15
 
 [X] 에러 수정
+
+
+🎭 2021.11.16
+
+[ ] Context API 개념 정리 
+
+[ ] Context API 활용해서 전역값 관리
+ 
+[ ] UserDispatch Context 만들기
+
+[ ] Immer 개념 정리
+
+[ ] Immer 통한 불변성 지키기 적용
+
+[ ] 리듀서 Immer로 구현하기 
+
+[ ] 클래스형 컴포넌트란?
+
+[ ] LifeCycle 개념정리
+
