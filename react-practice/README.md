@@ -354,4 +354,20 @@ const onMinus = () => {
 useState,useEffect,useReducer등의 기존의 훅들을 사용하여서 커스텀 훅을 만들 수 있다 
 
 
+### Context API
+
+리액트 프로젝트에서 전역적으로 사용할 데이터가 있을때 유용한 기능 
+
+다른 파일에서 정의를 한 후 다른 곳에서 사용이 가능하다
+
+- 사용방법 예시 
+
+```
+const myContext = createContext('default'); //전역적으로 관리할 데이터가 들어갈 변수를 createContext라는 hook을 활용해서 생성하기 
+return (
+    <myContext.Provider value="Hello">
+        <Text />
+    </myContext.Provider> 
+) // 변수 값을 myContext.provider를 활용해서 할당해주기
+```
 

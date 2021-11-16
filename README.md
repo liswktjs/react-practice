@@ -60,7 +60,7 @@
 
 🎭 2021.11.16
 
-[ ] Context API 개념 정리 
+[X] Context API 개념 정리 
 
 [ ] Context API 활용해서 전역값 관리
  
