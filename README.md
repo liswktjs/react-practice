@@ -66,11 +66,11 @@
  
 [X] UserDispatch Context 만들기
 
-[ ] Immer 개념 정리
+[X] Immer 개념 정리
 
-[ ] Immer 통한 불변성 지키기 적용
+[X] Immer 통한 불변성 지키기 적용
 
-[ ] 리듀서 Immer로 구현하기 
+[X] 리듀서 Immer로 구현하기 
 
 [ ] 클래스형 컴포넌트란?
 

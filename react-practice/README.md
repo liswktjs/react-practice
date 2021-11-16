@@ -371,3 +371,19 @@ return (
 ) // 변수 값을 myContext.provider를 활용해서 할당해주기
 ```
 
+### immer 
+
+해당 라이브러리를 사용하게 되면 불변성을 해치는 코드를 작성해도 불변성을 유지해준다 
+
+react native에서는 사용하지 못한다
+
+설치 코드 yarn add immer
+
+사용방법 
+```
+const nextArr = produce(array, draft => {
+    draft.push({id: 4 , text:'blal'})
+    draft[0].text = draft[0].text + ' hello';
+})
+// 값을 변경시키고자 하는 arr 객체에 prduce를 사용한다 변경시키고자하는 arr, 그 해당 arr를 지칭하는 draft를 차례대로 인수로 가진다 
+```
