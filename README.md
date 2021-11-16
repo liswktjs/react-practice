@@ -62,9 +62,9 @@
 
 [X] Context API 개념 정리 
 
-[ ] Context API 활용해서 전역값 관리
+[X] Context API 활용해서 전역값 관리
  
-[ ] UserDispatch Context 만들기
+[X] UserDispatch Context 만들기
 
 [ ] Immer 개념 정리
 

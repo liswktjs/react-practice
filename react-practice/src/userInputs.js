@@ -1,9 +1,6 @@
-import {useState, useReducer, useCallback} from 'react';
+import {useState, useCallback} from 'react';
 
-function reducer(state, action){
-    
-}
-function useInputs(initialForm){
+function UserInputs(initialForm){
     const [form, setForm] = useState(initialForm);
     const onChange = useCallback(e => {
         const {name, value} = e.target;
@@ -18,4 +15,4 @@ function useInputs(initialForm){
         form, onChange, reset
     ]
 }
-export default useInputs;
+export default UserInputs;
