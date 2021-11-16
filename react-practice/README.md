@@ -387,3 +387,87 @@ const nextArr = produce(array, draft => {
 })
 // 값을 변경시키고자 하는 arr 객체에 prduce를 사용한다 변경시키고자하는 arr, 그 해당 arr를 지칭하는 draft를 차례대로 인수로 가진다 
 ```
+
+### class 형 컴포넌트 
+
+현재는 함수형 컴포넌트 보다 사용도가 떨어지고 있음 
+
+예시 
+```
+import React, {Component} from 'react';
+
+class Hello extends Component {
+    static defaultProps ={
+        name:'이름없음'
+    };
+    render() {
+        return (
+            <div>
+                {this.props.isSpecial && <b>*</b>}
+                안녕하세요 {this.props.name}
+            </div>
+        )
+    }
+}
+
+```
+
+- 클래스형에서 state 와 setState
+
+```
+import React, {Component} from 'react';
+
+class Counter extends Component{
+    constructor(props){
+        super(props);
+        //함수내에서 this사용하기 위한 처리
+        this.handleIncrease = this.handleIncrease.bind(this);
+        this.handleDecrease = this.handleDecrease.bind(this);
+        //state를 설정할때에는 객체로 값을 설정해야한다
+        this.state = {
+            counter : 0
+        };
+    }
+    handleIncrease(){
+        this.setState({
+            counter: this.state.counter + 1
+        })
+    }
+    handleDecrease(){
+        this.setState({
+            counter: this.state.counter - 1
+        })
+    }
+
+    render(){
+        return(
+            <div>
+                <h1>{this.state.counter}</h1>
+                <button onClick={this.handleIncrease}>+1</button>
+                <button onClick={this.handleDecrease}>-1</button>
+            </div>
+        )
+    }
+}
+```
+
+### Life Cycle method = 생명주기 메서드 
+
+class형 컴포넌트에서만 사용이 가능하다 
+
+#### 생성 시 , 마운트
+
+- constructor : 컴포넌트 생성시 실행 , 가장 처음 만들어질 때 실행이 된다 , this.state값 설정 , this 바인딩 등의 작업 수행
+- getDerivedStateFromProps: nextprops, prevprops 들을 받아온다 props로 받아온 값들을 state로 동결시킨다 
+- render: 브라우저에 그리는 것 
+- componentDidMount: DOM에 직접 접근 가능 state 값 설정 가능 / 외부 api 연결, dom 이벤트 설정 등 가능 
+
+#### 업데이트 시 (newprops, setstate, update등 )
+- getDerivedStateFromProps: 컴포넌트가 마운트시 실행이 된다 
+- shouldComponentUpdate : 컴포넌트을 최적화해야하는 단계에서 사용 / false를 반환하게 되면 render가 실행이 되지 않는다 
+- render: 변경사항을 브라우저에 적용
+- getSnapshotBeforeUpdate: 브라우저 상에서 내용변경 직전에 호출 / 변경직전에 dom 접근 가능
+- componentDidUpdate: 직전 단계에서 return 되는 값에 따라서 작업을 처리한다 
+
+#### 삭제시 
+- componentWillUnmount: 컴포넌트 삭제 직전에 호출되는 함수이다 등록된 함수를 삭제하거나 하는 작업을 처리한다 
