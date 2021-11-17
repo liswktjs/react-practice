@@ -76,3 +76,10 @@
 
 [X] LifeCycle 개념정리
 
+👩‍💻 2021.11.17
+
+[ ] componentDidCath 개념 정리 
+
+[ ] componentDidCatch와 Sentry 연동 
+
+[ ] Snippet 사용하기
