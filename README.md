@@ -79,3 +79,5 @@
 [X] componentDidCath 개념 정리
 
 [X] Snippet
+
+[X] React 스타일링 방법 알아보기
