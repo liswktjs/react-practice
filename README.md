@@ -86,7 +86,9 @@
 
 [X] 버튼 스타일링 작업
 
-[ ] CSS Moudle 개념 정리
+[X] CSS Module 개념 정리
+
+[X] CSSModule 적용해보기
 
 [ ] styled components 개념 정리
 
