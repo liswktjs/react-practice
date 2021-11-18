@@ -59,3 +59,11 @@ function Box(){
 레거시 프로젝트에 리액트를 도입시 기존의 css 이름과 중복되는 것을 막아준다
 
 css 클래시 네이밍 규칙을 정하지 않아도 된다
+
+## styled component
+
+css in js 관련 라이브러리 / 자바스크립트 안에서 css를 작성하는 것
+
+대체제들로는 emotion, styled-component, styled-jsx, jss등의 라이브러리가 있다
+
+설치 : yarn add styled-components
