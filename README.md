@@ -90,6 +90,4 @@
 
 [X] CSSModule 적용해보기
 
-[ ] styled components 개념 정리
-
-[ ] styled components으로 버튼 작업
+[X] styled components 개념 정리
